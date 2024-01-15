@@ -24,7 +24,7 @@ public class ShowButton : MonoBehaviour
         }
 
         // 현제 에니 수행후 다음 실행
-        buttons[startIndex].GetComponent<RectTransform>().DOAnchorPosY(-430f, .3f)
+        buttons[startIndex].GetComponent<RectTransform>().DOAnchorPosY(-450f, .3f)
             .OnComplete(() => SelectButton(startIndex + 1));
     }
 
