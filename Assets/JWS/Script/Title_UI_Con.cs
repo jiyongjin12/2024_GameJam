@@ -26,6 +26,7 @@ public class Title_UI_Con : MonoBehaviour
 
     void OnCStart()
     {
+        AudioManager.instance.PlaySFX("button");
         if (IsButtonON == true) return;
 
         IsButtonON = true;
@@ -34,6 +35,7 @@ public class Title_UI_Con : MonoBehaviour
 
     IEnumerator StartButtonFunction()
     {
+        
         FadeCon.instance.FadeInOut();
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("ingame");

@@ -29,6 +29,8 @@ public class AudioManager : MonoBehaviour
     public Slider sfxSlider;
 
 
+
+
     public GameObject AudioOptionPanel;
     public bool IsAudioPanel = false;
 
@@ -109,6 +111,7 @@ public class AudioManager : MonoBehaviour
 
     public void AudioOption_On_Off(bool type)
     {
+        instance.PlaySFX("button");
         IsAudioPanel = type;
         AudioOptionPanel.SetActive(type);
     }
