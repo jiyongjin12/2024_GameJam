@@ -29,6 +29,8 @@ public class AudioManager : MonoBehaviour
     public Slider sfxSlider;
 
 
+
+
     public GameObject AudioOptionPanel;
     public bool IsAudioPanel = false;
 
@@ -95,7 +97,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(string name)
     {
-        Sound sound = Array.Find(musicSound, x => x.name == name);
+        Sound sound = Array.Find(sfxSound, x => x.name == name);
 
         if (sound == null)
         {
@@ -103,13 +105,13 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            sfxSource.clip = sound.clip;
-            sfxSource.Play();
+            sfxSource.PlayOneShot(sound.clip);
         }
     }
 
     public void AudioOption_On_Off(bool type)
     {
+        instance.PlaySFX("button");
         IsAudioPanel = type;
         AudioOptionPanel.SetActive(type);
     }
