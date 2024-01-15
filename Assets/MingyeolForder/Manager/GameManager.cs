@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Diagnostics.Contracts;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject stageClearPanel;
     [SerializeField] private int earthMaxHp;
     public bool isInGame;
+
+    public int YESscore;
+    public int NOscore;
+
 
     private void Awake()
     {
@@ -46,7 +51,17 @@ public class GameManager : MonoBehaviour
     public void StageClear()
     {
         isInGame = false;
+        earthHp = earthMaxHp;
         stageClearPanel.SetActive(true);
+    }
+
+    public void StageStart()
+    {
+        isInGame = true;
+        earthHp = earthMaxHp;
+        hpText.text = earthHp.ToString();
+        stageClearPanel.SetActive(false);
+        StageManager.instance.ChangeNextStage();
     }
 
     public void GameLoadScene()

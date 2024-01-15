@@ -38,7 +38,7 @@ public class TimeManager : MonoBehaviour
     public void TimerButton()
     {
         GameManager.instance.isInGame = true;
-        SpawnManager.instance.SetTrashObject();
+        SpawnManager.instance.SetTrashObject(false, null);
         StartCoroutine(Co_TimeCheck());
     }
 
@@ -72,7 +72,7 @@ public class TimeManager : MonoBehaviour
             {
                 StartTimer();
                 GameManager.instance.HpMinus();
-                SpawnManager.instance.SetTrashObject();
+                SpawnManager.instance.SetTrashObject(false, null);
             }
         }
     }
