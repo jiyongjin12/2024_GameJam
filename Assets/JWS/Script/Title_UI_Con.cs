@@ -40,6 +40,7 @@ public class Title_UI_Con : MonoBehaviour
     }
     void OnCOption()
     {
+        AudioManager.instance.PlaySFX("button");
         AudioManager.instance.AudioOption_On_Off(true);
     }
 

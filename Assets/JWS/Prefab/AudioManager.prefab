@@ -927,8 +927,8 @@ MonoBehaviour:
   - name: Muisc_002
     clip: {fileID: 8300000, guid: 02db073029a835c4e82e4115ee964725, type: 3}
   sfxSound:
-  - name: 
-    clip: {fileID: 0}
+  - name: button
+    clip: {fileID: 8300000, guid: e151be03fb12e6747b1b95d814ab7822, type: 3}
   musicSource: {fileID: 2168212338863062992}
   sfxSource: {fileID: 2168212337338034390}
   mixer: {fileID: 24100000, guid: ccb1bb954d8999a4c823f44083bd076d, type: 2}
