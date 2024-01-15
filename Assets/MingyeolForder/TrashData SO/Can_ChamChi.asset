@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 862a608f402e59343aededfc86d9de66, type: 3}
-  m_Name: Trash 3
+  m_Name: Can_ChamChi
   m_EditorClassIdentifier: 
   material: 2
-  color: 0
+  color: 2
   shape: 0
   isMark: 0
-  sprite: {fileID: 21300000, guid: 7af5f1b9cb7fc7645a9f27f070fbe2fd, type: 3}
+  sprite: {fileID: 21300000, guid: b48dab9f71431f14a8997c98545102e9, type: 3}

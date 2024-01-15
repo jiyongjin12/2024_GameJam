@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 862a608f402e59343aededfc86d9de66, type: 3}
-  m_Name: Trash 1
+  m_Name: Can_Red
   m_EditorClassIdentifier: 
-  material: Plastic
-  color: Red
-  shape: Spuare
-  mark: 1
-  sprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  material: 2
+  color: 0
+  shape: 0
+  isMark: 0
+  sprite: {fileID: 21300000, guid: b91e4672119831847beeb95f466146ff, type: 3}
