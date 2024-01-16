@@ -24,19 +24,19 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        goodText.text = YesScore.ToString();
-        badText.text = NoScore.ToString();
+        //goodText.text = YesScore.ToString();
+        //badText.text = NoScore.ToString();
     }
 
     public void Yes()
     {
         YesScore++;
-        Instantiate(GoodEffectPrefab,canvas);
+       // Instantiate(GoodEffectPrefab,canvas);
     }
 
     public void No()
     {
         NoScore++;
-        Instantiate(BadEffectPrefab, canvas);
+       // Instantiate(BadEffectPrefab, canvas);
     }
 }

@@ -29,14 +29,14 @@ public class Spawn : MonoBehaviour
 
     private void TrashSpawn()
     {
-        if (StageManager.instance.nowStageTrash > 3)
+
+        if(StageManager.instance.nowStageTrash > 0)
         {
+            StageManager.instance.TrashDown();
             GameObject trash = Instantiate(summonedTrash, spawnPos.transform.position, Quaternion.identity);
             trash.GetComponent<Trash>().data = datas[Random.Range(0, datas.Length)];
             trashList.Add(trash);
         }
-        else canSummon = false;
-
     }
     private void SummonTrash(int count)
     {

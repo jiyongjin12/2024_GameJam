@@ -28,14 +28,13 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        nowStageNum = 0;
         TrashInit();
     }
 
     public void TrashDown()
     {
         nowStageTrash--;
-        if(nowStageTrash <= 1)
+        if(nowStageTrash <= -2)
         {
             Debug.Log("dddd");
             GameManager.instance.StageClear();
@@ -50,7 +49,7 @@ public class StageManager : MonoBehaviour
 
     public void TrashInit()
     {
-        nowStageTrash = stage[nowStageNum].trashAmount + 3;
+        nowStageTrash = (stage[nowStageNum].trashAmount + 3) * 2;
     }
 
     
