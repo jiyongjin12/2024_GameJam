@@ -18,7 +18,7 @@ public class Note : MonoBehaviour
             QuestOn(0.3f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             QuestOff(0.3f);
         }
