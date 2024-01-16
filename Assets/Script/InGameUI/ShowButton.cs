@@ -7,12 +7,22 @@ using DG.Tweening;
 public class ShowButton : MonoBehaviour
 {
     public Button[] buttons;
-    public Image timeGauge;
+    public Image timeGaugeObj;
+
+    [SerializeField] private Image timeGauge;
+    [SerializeField] private float currentTime;
+    private float maxCurrentTime;
 
     private void Start()
     {
         SelectButton(0);
         TimeImage();
+        maxCurrentTime = currentTime;
+    }
+
+    private void Update()
+    {
+        TimeCount();
     }
 
     private void SelectButton(int startIndex)
@@ -23,15 +33,20 @@ public class ShowButton : MonoBehaviour
             return;
         }
 
-        // 현제 에니 수행후 다음 실행
+        // 현제 애니 수행후 다음 실행
         buttons[startIndex].GetComponent<RectTransform>().DOAnchorPosY(-450f, .3f)
             .OnComplete(() => SelectButton(startIndex + 1));
     }
 
     private void TimeImage()
     {
-        timeGauge.rectTransform.DOAnchorPosY(0, .5f);
+        timeGaugeObj.rectTransform.DOAnchorPosY(522, .5f);
     }
 
-
+    private void TimeCount()
+    {
+        currentTime -= Time.deltaTime;
+        currentTime = Mathf.Max(0f, currentTime);
+        timeGauge.fillAmount = currentTime / maxCurrentTime;
+    }
 }
