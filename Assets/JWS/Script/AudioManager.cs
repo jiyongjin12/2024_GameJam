@@ -95,6 +95,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopMusic(string name)
+    {
+        Sound sound = Array.Find(musicSound, x => x.name == name);
+
+        if (sound == null)
+        {
+            Debug.Log("SondNotFound_ERROR");
+        }
+        else
+        {
+            musicSource.clip = sound.clip;
+            musicSource.Stop();
+        }
+    }
+
     public void PlaySFX(string name)
     {
         Sound sound = Array.Find(sfxSound, x => x.name == name);

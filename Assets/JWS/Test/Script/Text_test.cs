@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class Text_test : MonoBehaviour
 {
+    public bool converOver = false;
+
     // 텍스트 출력을 담당하는 TextMeshProUGUI 컴포넌트
     public TextMeshProUGUI textCompo;
 
     // 출력할 텍스트들을 저장한 배열
     public string[] lines;
+
 
     // 텍스트가 나타나는 속도
     public float textSpeed;
@@ -38,13 +42,20 @@ public class Text_test : MonoBehaviour
         }
     }
 
+
+
     // 스크립트가 시작될 때 호출되는 함수
     private void Start()
     {
+
         // 초기에는 텍스트를 비워둔 상태로 시작하고 StartText 함수 호출
+
+
         textCompo.text = string.Empty;
         StartText();
     }
+
+
 
     // 텍스트 출력 시작 함수
     void StartText()
@@ -79,6 +90,7 @@ public class Text_test : MonoBehaviour
         // 배열 끝까지 도달하면 게임 오브젝트를 비활성화하여 텍스트 출력 종료
         else
         {
+            converOver = true;
             gameObject.SetActive(false);
         }
     }

@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/JWS/Scene/00_GAME_TITLE.unity
+    guid: 77d0da5af5fb2aa449ab0c12bf784256
+  - enabled: 1
+    path: Assets/JWS/Scene/01_AI.unity
+    guid: d547dda20dd0be44db98de925d7721f9
+  - enabled: 1
+    path: Assets/JWS/Test/Scene/ingame.unity
+    guid: e76dd8bce59787047b74e96a6a21d958
   m_configObjects: {}
