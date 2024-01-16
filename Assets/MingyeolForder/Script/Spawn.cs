@@ -4,25 +4,45 @@ using UnityEngine.Rendering;
 using UnityEngine;
 using DG.Tweening;
 
-public class TrashMovemet : MonoBehaviour
+public class Spawn : MonoBehaviour
 {
+    public static Spawn instance;
+
+    [SerializeField] private TrashData[] datas;
     public GameObject summonedTrash;
     public List<GameObject> trashList;
     public GameObject spawnPos;
+    public bool click;
 
     private bool canSummon = true;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void Start()
     {
+        click = true;
         SummonTrash(3);
     }
 
+    private void TrashSpawn()
+    {
+        if (StageManager.instance.nowStageTrash > 3)
+        {
+            GameObject trash = Instantiate(summonedTrash, spawnPos.transform.position, Quaternion.identity);
+            trash.GetComponent<Trash>().data = datas[Random.Range(0, datas.Length)];
+            trashList.Add(trash);
+        }
+        else canSummon = false;
+
+    }
     private void SummonTrash(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            GameObject trash = Instantiate(summonedTrash, spawnPos.transform.position, Quaternion.identity);
-            trashList.Add(trash);
+            TrashSpawn();
         }
     }
 
@@ -34,7 +54,7 @@ public class TrashMovemet : MonoBehaviour
         {
             Invoke("SummonTrashAfterDelay", .1f);
             canSummon = false;
-        }       
+        }
 
         ObjectInformationInLinst();
     }
@@ -59,11 +79,11 @@ public class TrashMovemet : MonoBehaviour
     {
         if (trashList.Count > 0 && trashList[0] != null && trashList[0].transform.position.z != 0)
         {
-            TweenTrash(trashList[0], new Vector3(0, -.8f, 0f), new Vector3(1.8f, 1.8f, 1), .5f);
+            TweenTrash(trashList[0], new Vector3(0, -.8f, 0f), new Vector3(1.8f, 2.2f, 1), .5f);
         }
         if (trashList.Count > 1 && trashList[1] != null && trashList[1].transform.position.z != .1f)
         {
-            TweenTrash(trashList[1], new Vector3(0, -.23f, .1f), new Vector3(1.3f, 1.3f, 1), 1f);
+            TweenTrash(trashList[1], new Vector3(0, -.23f, .1f), new Vector3(1.3f, 1.7f, 1), 1f);
         }
     }
 
@@ -78,8 +98,7 @@ public class TrashMovemet : MonoBehaviour
 
     private void SummonTrashAfterDelay()
     {
-        GameObject trash = Instantiate(summonedTrash, spawnPos.transform.position, Quaternion.identity);
-        trashList.Add(trash);
+        TrashSpawn();
 
         canSummon = true;
     }
@@ -92,21 +111,56 @@ public class TrashMovemet : MonoBehaviour
     // 밑에는 지워도 되는것_ 버튼눌렀을때 좌우 있어보이게 눈속임 한것
     public void YesButton()
     {
-        if(trashList.Count > 0)
+        if (trashList.Count > 0 && click)
         {
+            click = false;
             GameObject gameObj = trashList[0].gameObject;
             RemoveList();
             gameObj.transform.DOMoveX(30, 1f).SetRelative();
+            StartCoroutine(Co_Destory(gameObj, 1f));
+            StartCoroutine(ClickTime());
         }
     }
 
     public void NoButton()
     {
-        if (trashList.Count > 0)
+        if (trashList.Count > 0 && click)
         {
+            click = false;
             GameObject gameObj = trashList[0].gameObject;
             RemoveList();
             gameObj.transform.DOMoveX(-30, 1f).SetRelative();
+            StartCoroutine(Co_Destory(gameObj, 1f));
+            StartCoroutine(ClickTime()); 
         }
+    }
+
+    public IEnumerator ColorButton(Transform transform)
+    {
+        if (trashList.Count > 0 && click)
+        {
+            click = false;
+            
+            GameObject gameObj = trashList[0].gameObject;
+            RemoveList();
+            Sequence seq = DOTween.Sequence();
+            seq.Append(gameObj.transform.DOMoveX(transform.position.x, 0.5f));
+            seq.Append(gameObj.transform.DOMoveY(transform.position.y, 0.3f));
+            yield return new WaitForSeconds(0.5f);
+            click = true;
+            StartCoroutine(Co_Destory(gameObj, 1f));
+        }
+    }
+
+    private IEnumerator Co_Destory(GameObject go, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(go);
+    }
+
+    private IEnumerator ClickTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        click = true;
     }
 }

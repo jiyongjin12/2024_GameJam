@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Button
+    uniqueID: 4093972169
+    locked: 0
+  - name: Trash
+    uniqueID: 3968147623
+    locked: 0

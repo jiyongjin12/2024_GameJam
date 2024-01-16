@@ -26,7 +26,7 @@ public enum TrashMaterial {
     General, // 일반
     Plastic, // 페트
     Metal, // 캔류
-    Glass // 유리병류
+    Paper // 유리병류
 }
 
 public enum TrashShape { 
@@ -36,6 +36,7 @@ public enum TrashShape {
 
 public enum TrashColor {
     Red,
+    Yellow,
     Blue,
     Green,
 }
