@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isInGame) { isInGame = true; }
         stageClearPanel.transform.DOScale(0, 0.3f);
+     //   StageManager.instance.NextStageChange();
         TimeManager.instance.StartTimerButton();
     }
 }

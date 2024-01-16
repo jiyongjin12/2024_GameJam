@@ -30,7 +30,7 @@ public class ShowButton : MonoBehaviour
 
     private void TimeImage()
     {
-        timeGauge.rectTransform.DOAnchorPosY(470f, .5f);
+        timeGauge.rectTransform.DOAnchorPosY(0, .5f);
     }
 
 
