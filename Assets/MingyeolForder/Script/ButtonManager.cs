@@ -1,66 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    //[SerializeField] private GameObject[] colorButtons;
-
-    //[SerializeField] private GameObject destroyButton;
-    //[SerializeField] private GameObject resycleButton;
-
-    //[SerializeField] private Image[] materialImage;
-    //[SerializeField] private Sprite[] materialSprite;
-
-    //private void Awake()
-    //{
-    //    RandomMaterial();
-    //}
-    //private void Start()
-    //{
-
-    //}
-
-    //public void RandomMaterial()
-    //{
-    //    colorButtons[0].GetComponent<TrashCheck>().pipeMaterial = TrashMaterial.General;
-    //    colorButtons[1].GetComponent<TrashCheck>().pipeMaterial = TrashMaterial.Plastic;
-    //    colorButtons[2].GetComponent<TrashCheck>().pipeMaterial = TrashMaterial.Metal;
-    //    colorButtons[3].GetComponent<TrashCheck>().pipeMaterial = TrashMaterial.Paper;
-    //}
-
-    //public void MaterialButton(int pipeIndex)
-    //{
-    //    if (Spawn.instance.trashList.Count > 0 && Spawn.instance.click == true)
-    //    {
-
-    //        TimeManager.instance.TimeSet();
-    //        if (colorButtons[pipeIndex].GetComponent<TrashCheck>().pipeMaterial == Spawn.instance.trashList[0].GetComponent<Trash>().data.Material)
-    //        {
-    //            ScoreManager.instance.Yes();
-    //        }
-    //        else
-    //        {
-    //            ScoreManager.instance.No();
-    //        }
-    //        StartCoroutine(Spawn.instance.ColorButton(colorButtons[pipeIndex].transform));
-    //    }
-
-    //}
-
-    //public void ResycleButton()
-    //{
-
-    //}
-
-    //public void DesytoyButton()
-    //{
-
-    //}
-
-
     [SerializeField] private GameObject[] colorButtons;
 
     [SerializeField] private GameObject destroyButton;
@@ -75,7 +21,7 @@ public class ButtonManager : MonoBehaviour
     }
     private void Start()
     {
-
+        
     }
 
     public void RandomMaterial()
@@ -96,6 +42,7 @@ public class ButtonManager : MonoBehaviour
             TrashMaterial selectedMaterial = availableMaterials[randomIndex];
 
             colorButtons[i].GetComponent<TrashCheck>().pipeMaterial = selectedMaterial;
+            materialImage[i].GetComponent<Image>().sprite = materialSprite[(int)selectedMaterial];
 
             selectedMaterials.Add(selectedMaterial);
 
@@ -107,8 +54,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (Spawn.instance.trashList.Count > 0 && Spawn.instance.click == true)
         {
-
-            TimeManager.instance.TimeSet();
+            StageManager.instance.TrashDown();
             if (colorButtons[pipeIndex].GetComponent<TrashCheck>().pipeMaterial == Spawn.instance.trashList[0].GetComponent<Trash>().data.Material)
             {
                 ScoreManager.instance.Yes();
@@ -124,12 +70,11 @@ public class ButtonManager : MonoBehaviour
 
     public void ResycleButton()
     {
-
+        
     }
 
     public void DesytoyButton()
     {
 
     }
-
 }

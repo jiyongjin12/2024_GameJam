@@ -29,15 +29,14 @@ public class Spawn : MonoBehaviour
 
     private void TrashSpawn()
     {
-        if (StageManager.instance.nowStageTrash > 0)
+        if (StageManager.instance.nowStageTrash > 3)
         {
-            
             GameObject trash = Instantiate(summonedTrash, spawnPos.transform.position, Quaternion.identity);
             trash.GetComponent<Trash>().data = datas[Random.Range(0, datas.Length)];
             trashList.Add(trash);
-            StageManager.instance.TrashDown();
         }
         else canSummon = false;
+
     }
     private void SummonTrash(int count)
     {
@@ -114,7 +113,6 @@ public class Spawn : MonoBehaviour
     {
         if (trashList.Count > 0 && click)
         {
-            TimeManager.instance.TimeSet();
             click = false;
             GameObject gameObj = trashList[0].gameObject;
             RemoveList();
@@ -128,7 +126,6 @@ public class Spawn : MonoBehaviour
     {
         if (trashList.Count > 0 && click)
         {
-            TimeManager.instance.TimeSet();
             click = false;
             GameObject gameObj = trashList[0].gameObject;
             RemoveList();

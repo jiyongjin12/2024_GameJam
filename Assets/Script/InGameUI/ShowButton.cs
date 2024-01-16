@@ -9,19 +9,10 @@ public class ShowButton : MonoBehaviour
     public Button[] buttons;
     public Image timeGauge;
 
-    [SerializeField] private Image Stagetime;
-    [SerializeField] private float currentTime;
-
     private void Start()
     {
         SelectButton(0);
         TimeImage();
-        StartCoroutine(C_stageTime());
-    }
-
-    private void Update()
-    {
-        Stagetime.fillAmount = currentTime;
     }
 
     private void SelectButton(int startIndex)
@@ -39,20 +30,7 @@ public class ShowButton : MonoBehaviour
 
     private void TimeImage()
     {
-        timeGauge.rectTransform.DOAnchorPosY(523f, .5f);
-    }
-
-    public IEnumerator C_stageTime()
-    {
-        while(currentTime > 0)
-        {
-            currentTime -= Time.deltaTime;
-            yield return null;
-        }
-        if (currentTime < 0)
-        {
-            //gameOver
-        }
+        timeGauge.rectTransform.DOAnchorPosY(0, .5f);
     }
 
 
