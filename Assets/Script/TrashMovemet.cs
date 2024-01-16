@@ -59,11 +59,11 @@ public class TrashMovemet : MonoBehaviour
     {
         if (trashList.Count > 0 && trashList[0] != null && trashList[0].transform.position.z != 0)
         {
-            TweenTrash(trashList[0], new Vector3(0, -.8f, 0f), new Vector3(1.8f, 2.2f, 1), .5f);
+            TweenTrash(trashList[0], new Vector3(0, -.8f, 0f), new Vector3(1.8f, 1.8f, 1), .5f);
         }
         if (trashList.Count > 1 && trashList[1] != null && trashList[1].transform.position.z != .1f)
         {
-            TweenTrash(trashList[1], new Vector3(0, -.23f, .1f), new Vector3(1.3f, 1.7f, 1), 1f);
+            TweenTrash(trashList[1], new Vector3(0, -.23f, .1f), new Vector3(1.3f, 1.3f, 1), 1f);
         }
     }
 
