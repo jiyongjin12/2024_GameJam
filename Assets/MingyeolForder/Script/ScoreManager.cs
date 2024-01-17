@@ -30,12 +30,14 @@ public class ScoreManager : MonoBehaviour
 
     public void Yes()
     {
+        AudioManager.instance.PlaySFX("YesScore");
         YesScore++;
         Instantiate(GoodEffectPrefab,canvas);
     }
 
     public void No()
     {
+        AudioManager.instance.PlaySFX("NoScore");
         NoScore++;
         Instantiate(BadEffectPrefab, canvas);
         GameManager.instance.HpDown();

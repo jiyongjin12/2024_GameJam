@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+    public static ButtonManager Instance { get; private set; }
+
     [SerializeField] private GameObject[] colorButtons;
 
     [SerializeField] private GameObject destroyButton;
@@ -17,11 +19,11 @@ public class ButtonManager : MonoBehaviour
 
     private void Awake()
     {
-        RandomMaterial();
+        Instance = this;
     }
     private void Start()
     {
-        
+        RandomMaterial();
     }
 
     public void RandomMaterial()

@@ -28,8 +28,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlayMusic("Muisc_003");
         curHp = maxHp;
-        StageClear();
+        stageStartPanel.transform.localScale = new Vector3(0, 0, 0);
+        stageStartPanel.transform.DOScale(1, 0.3f);
     }
 
     private void Update()
@@ -58,7 +60,8 @@ public class GameManager : MonoBehaviour
     public void StageClear()
     {
         if(isInGame) { isInGame = false;}
-
+        ButtonManager.Instance.RandomMaterial();
+        curHp = maxHp;
         stageClearPanel.transform.localScale = new Vector3(0, 0, 0);
         stageClearPanel.transform.DOScale(1, 0.3f);
     }
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isInGame) { isInGame = true; }
         stageClearPanel.transform.DOScale(0, 0.3f);
+        stageStartPanel.transform.DOScale(0, 0.3f);
         StageManager.instance.NextStageChange();
         TimeManager.instance.StartTimerButton();
     }

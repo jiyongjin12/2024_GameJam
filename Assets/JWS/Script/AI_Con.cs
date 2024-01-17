@@ -28,6 +28,6 @@ public class AI_Con : MonoBehaviour
     IEnumerator moveNextScene()
     {
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("ingame");
+        SceneManager.LoadScene("InGame");
     }
 }

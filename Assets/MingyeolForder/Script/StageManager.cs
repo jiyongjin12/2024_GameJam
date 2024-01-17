@@ -15,7 +15,8 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
 
-    [SerializeField] private TMP_Text trashMountText;
+    [SerializeField] private TMP_Text roundText;
+    private int roundTextInt = 0;
 
     public Stage[] stage;
     public int nowStageNum;
@@ -28,8 +29,11 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        roundTextInt = 1;
         TrashInit();
     }
+
+    
 
     public void TrashDown()
     {
@@ -43,6 +47,8 @@ public class StageManager : MonoBehaviour
 
     public void NextStageChange()
     {
+        roundTextInt++;
+        roundText.text = roundTextInt.ToString();
         nowStageNum++;
         TrashInit();
     }

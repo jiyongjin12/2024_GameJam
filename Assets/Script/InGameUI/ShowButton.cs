@@ -40,7 +40,7 @@ public class ShowButton : MonoBehaviour
 
     private void TimeImage()
     {
-        timeGaugeObj.rectTransform.DOAnchorPosY(522, .5f);
+        timeGaugeObj.rectTransform.DOAnchorPosY(0, .5f);
     }
 
     private void TimeCount()
