@@ -7,7 +7,7 @@ public class ConverCon : MonoBehaviour
 {
     public GameObject TextPanel;
 
-    void Awake()
+    void Start()
     {
         StartCoroutine(StartText());
     }

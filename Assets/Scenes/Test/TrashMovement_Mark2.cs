@@ -1,0 +1,108 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Rendering;
+using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+
+public class TrashMovement_Mark2 : MonoBehaviour
+{
+    public GameObject summonedTrash;
+    public List<GameObject> trashList;
+    public GameObject spawnPos;
+    public Test_AssetMenu trashInfoAsset;
+
+    private bool canSummon = true;
+
+    public void Start()
+    {
+        SummonTrash(3);
+    }
+
+    private void SummonTrash(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Test_AssetMenu.ATrash randomTrash = trashInfoAsset.trashType[Random.Range(0, trashInfoAsset.trashType.Length)]; // 랜덤
+
+            GameObject trash = Instantiate(summonedTrash, spawnPos.transform.position, Quaternion.identity);
+            trashList.Add(trash);
+
+            if (trash != null)
+            {
+                SpriteRenderer spriteRenderer = trash.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null && randomTrash.categorySprite != null)
+                {
+                    spriteRenderer.sprite = randomTrash.categorySprite;
+                }
+            }
+        }
+    }
+
+    private void Update()
+    {
+        trashList.RemoveAll(item => item == null);
+
+        if (trashList.Count < 3 && canSummon)
+        {
+            Invoke("SummonTrashAfterDelay", .1f);
+            canSummon = false;
+        }
+
+        ObjectInformationInLinst();
+    }
+
+    private void ObjectInformationInLinst()
+    {
+        if (trashList.Count > 0 && trashList[0] != null && trashList[0].transform.position.z != 0)
+        {
+            TweenTrash(trashList[0], new Vector3(0, -.8f, 0f), new Vector3(1.8f, 1.8f, 1), .5f);
+        }
+        if (trashList.Count > 1 && trashList[1] != null && trashList[1].transform.position.z != .1f)
+        {
+            TweenTrash(trashList[1], new Vector3(0, -.23f, .1f), new Vector3(1.3f, 1.3f, 1), 1f);
+        }
+    }
+
+    private void TweenTrash(GameObject trashObject, Vector3 targetPosition, Vector3 targetScale, float duration)
+    {
+        if (trashObject != null)
+        {
+            trashObject.transform.DOLocalMove(targetPosition, duration);
+            trashObject.transform.DOScale(targetScale, duration);
+        }
+    }
+
+    private void SummonTrashAfterDelay()
+    {
+        SummonTrash(1);
+
+        canSummon = true;
+    }
+
+    private void RemoveList()
+    {
+        trashList.RemoveAt(0);
+    }
+
+    // 밑에는 지워도 되는것_ 버튼눌렀을때 좌우 있어보이게 눈속임 한것
+    public void YesButton()
+    {
+        if (trashList.Count > 0)
+        {
+            GameObject gameObj = trashList[0].gameObject;
+            RemoveList();
+            gameObj.transform.DOMoveX(30, 1f).SetRelative();
+        }
+    }
+
+    public void NoButton()
+    {
+        if (trashList.Count > 0)
+        {
+            GameObject gameObj = trashList[0].gameObject;
+            RemoveList();
+            gameObj.transform.DOMoveX(-30, 1f).SetRelative();
+        }
+    }
+}

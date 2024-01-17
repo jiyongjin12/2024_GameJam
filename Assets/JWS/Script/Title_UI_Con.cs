@@ -38,7 +38,8 @@ public class Title_UI_Con : MonoBehaviour
         
         FadeCon.instance.FadeInOut();
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("ingame");
+        AudioManager.instance.StopMusic("Muisc_001");
+        SceneManager.LoadScene("01_AI");
     }
     void OnCOption()
     {
