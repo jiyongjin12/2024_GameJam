@@ -49,7 +49,7 @@ public class StageManager : MonoBehaviour
 
     public void TrashInit()
     {
-        nowStageTrash = (stage[nowStageNum].trashAmount + 3) * 2;
+        nowStageTrash = (stage[nowStageNum].trashAmount + 3);
     }
 
     

@@ -29,7 +29,6 @@ public class Spawn : MonoBehaviour
 
     private void TrashSpawn()
     {
-
         if(StageManager.instance.nowStageTrash > 0)
         {
             StageManager.instance.TrashDown();

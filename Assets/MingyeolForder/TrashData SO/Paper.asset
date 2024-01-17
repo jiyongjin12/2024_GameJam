@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862a608f402e59343aededfc86d9de66, type: 3}
   m_Name: Paper
   m_EditorClassIdentifier: 
-  material: 2
+  material: 3
   color: 0
   shape: 0
   isMark: 0

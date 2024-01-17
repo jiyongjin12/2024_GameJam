@@ -34,7 +34,7 @@ public class Note : MonoBehaviour
 
     public void QuestOff(float duration) // Off 
     {
-        note.GetComponent<RectTransform>().DOAnchorPosY(400f, duration);
+        note.GetComponent<RectTransform>().DOAnchorPosY(650f, duration);
 
         offButton.gameObject.SetActive(false);
         onButton.gameObject.SetActive(true);

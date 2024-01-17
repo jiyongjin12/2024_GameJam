@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverImage;
     [SerializeField] private GameObject stageClearPanel;
+    [SerializeField] private GameObject stageStartPanel;
+
+    [SerializeField] private Image hpGage;
+
+    public float maxHp;
+    public float curHp;
     public bool isInGame;
 
     private void Awake()
@@ -22,7 +28,22 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        curHp = maxHp;
         StageClear();
+    }
+
+    private void Update()
+    {
+        hpGage.fillAmount = curHp / maxHp;
+    }
+
+    public void HpDown()
+    {
+        curHp -= 1f;
+        if(curHp <= 0f)
+        {
+            GameOver();
+        }
     }
 
     public void GameOver()
@@ -46,7 +67,12 @@ public class GameManager : MonoBehaviour
     {
         if (!isInGame) { isInGame = true; }
         stageClearPanel.transform.DOScale(0, 0.3f);
-     //   StageManager.instance.NextStageChange();
+        StageManager.instance.NextStageChange();
         TimeManager.instance.StartTimerButton();
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
