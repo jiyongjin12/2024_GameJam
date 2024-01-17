@@ -1164,13 +1164,13 @@ MonoBehaviour:
   stage:
   - trashAmount: 10
     stageTime: 60
-  - trashAmount: 10
+  - trashAmount: 12
     stageTime: 40
-  - trashAmount: 10
+  - trashAmount: 14
     stageTime: 20
-  - trashAmount: 10
+  - trashAmount: 17
     stageTime: 15
-  - trashAmount: 10
+  - trashAmount: 20
     stageTime: 10
   nowStageNum: 0
   nowStageTrash: 0
